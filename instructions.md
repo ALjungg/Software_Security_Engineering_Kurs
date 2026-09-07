@@ -4,52 +4,7 @@ I denna kurs kommer du progressivt att lägga till säkerhetverktyg till ditt Gi
 
 ---
 
-## Steg 1: Static Application Security Testing (SAST) med Semgrep
-
-### 📚 Verktygsöversikt: Semgrep
-
-**Vad är Semgrep?**
-
-Semgrep är ett statisk analysverktyg som genomsöker din källkod för säkerhetssårbarheter, kodkvalitetsproblem och efterlevnadskränkningar **utan att köra koden**. Det använder mönsterbaserade regler för att upptäcka problem i din kodbas.
-
-### 🔗 Dokumentation & Resurser
-
-- **Semgrep officiell dokumentation:** https://semgrep.dev/docs/
-- **Semgreps regelbibliotek:** https://semgrep.dev/r
-
-### ✅ Din uppgift: Steg 1
-
-1. **Lägg till Semgrep i din `security.yml`** workflow fil
-   - Använd Semgrep GitHub Action 
-   - Konfigurera den för att genomsöka katalogen `todo-app`
-   - Ställ in den för att använda community-regeluppsättningen (gratis, öppen källkod)
-   - Pusha koden till ditt repos main branch
-
-2. **Kör GitHub Actions-arbetsflödet**
-   - Navigera till fliken **Actions** i din GitHub-databas
-   - Vänta på att Semgrep-jobbet är klart och blir godkänt
-
-3. **Granska resultaten**
-   - Gå till fliken **Security** → **Code scanning alerts**
-   - Undersök sårbarheten som hittades av Semgrep
-   - Notera allvarlighetsgraden och beskrivningar av några fynd
-
-4. **Reflektionsfråga:**
-
-   > **Har du identifierat något konstigt eller oväntat i Semgreps resultat?**
-   > 
-   > - Finns det falska positiva?
-   > - Hittade det säkerhetsproblem du förvände dig?
-   > - Finns det några ovanliga mönster?
-   > 
-
-### ⏱️ Om du har tid över...
-
-**Utmaning:** Försök att åtgärda en eller två av sårbarheter som identifieras av Semgrep i `todo-app`-källkoden.
-
----
-
-## Step 2: Dependency Vulnerability Scanning med Dependabot
+## Steg 1: Dependency Vulnerability Scanning med Dependabot
 
 ### 📚 Verktygsöversikt: Dependabot
 
@@ -62,8 +17,9 @@ Dependabot är GitHubs inbyggda beroendehanteringsverktyg som automatiskt genoms
 - **Dependabot-dokumentation:** https://docs.github.com/en/code-security/dependabot
 - **Dependabot-konfiguration:** https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates
 - **GitHub-säkerhetsbulletiner:** https://github.blog/security/
+- **Din bästa AI kompis**
 
-### ✅ Din uppgift: Steg 2
+### ✅ Din uppgift: Steg 1
 
 1. **Aktivera Dependabot via GitHub**
    - Navigera till repot
@@ -97,6 +53,50 @@ Dependabot är GitHubs inbyggda beroendehanteringsverktyg som automatiskt genoms
 - Arkivera uppdateringen och push för att utlösa Dependabot att genomsöka igen
 - Verifiera att problemet är löst
 
+## Steg 2: Static Application Security Testing (SAST) med Semgrep
+
+### 📚 Verktygsöversikt: Semgrep
+
+**Vad är Semgrep?**
+
+Semgrep är ett statisk analysverktyg som genomsöker din källkod för säkerhetssårbarheter, kodkvalitetsproblem och efterlevnadskränkningar **utan att köra koden**. Det använder mönsterbaserade regler för att upptäcka problem i din kodbas.
+
+### 🔗 Dokumentation & Resurser
+
+- **Semgrep officiell dokumentation:** https://semgrep.dev/docs/
+- **Semgreps regelbibliotek:** https://semgrep.dev/r
+- **Låt ditt digitala orakel, upplys dig**
+
+### ✅ Din uppgift: Steg 2
+
+1. **Lägg till Semgrep i din `security.yml`** workflow fil
+   - Använd Semgrep GitHub Action 
+   - Konfigurera den för att genomsöka katalogen `todo-app`
+   - Ställ in den för att använda community-regeluppsättningen (gratis, öppen källkod)
+   - Pusha koden till ditt repos main branch
+
+2. **Kör GitHub Actions-arbetsflödet**
+   - Navigera till fliken **Actions** i din GitHub-databas
+   - Vänta på att Semgrep-jobbet är klart och blir godkänt
+
+3. **Granska resultaten**
+   - Gå till fliken **Security** → **Code scanning alerts**
+   - Undersök sårbarheten som hittades av Semgrep
+   - Notera allvarlighetsgraden och beskrivningar av några fynd
+
+4. **Reflektionsfråga:**
+
+   > **Har du identifierat något konstigt eller oväntat i Semgreps resultat?**
+   > 
+   > - Finns det falska positiva?
+   > - Hittade det säkerhetsproblem du förvände dig?
+   > - Finns det några ovanliga mönster?
+   > 
+
+### ⏱️ Om du har tid över...
+
+**Utmaning:** Försök att åtgärda en eller två av sårbarheter som identifieras av Semgrep i `todo-app`-källkoden.
+
 ---
 
 ## Steg 3: Infrastruktursskanning med Trivy
@@ -112,6 +112,7 @@ Trivy är en omfattande sårbarhetsöversöksverktyg utvecklat av Aqua Security 
 - **Trivys officiella dokumentation:** https://aquasecurity.github.io/trivy/
 - **Trivys GitHub-databas:** https://github.com/aquasecurity/trivy
 - **Trivys säkerhetsbästa praxis:** https://aquasecurity.github.io/trivy/latest/
+- **Säg mig, allvetande brödrost, hur löser jag detta?**
 
 ### ✅ Din uppgift: Steg 3
 
@@ -156,6 +157,7 @@ Trufflehog är ett hemligetsökningsverktyg utvecklat av Truffle Security som de
 - **Trufflehogg officiell dokumentation:** https://trufflesecurity.com/trufflehog
 - **Trufflehogs GitHub-repo:** https://github.com/trufflesecurity/trufflehog
 - **Autentiseringsuppgifthantering bästa praxis:** https://docs.github.com/en/code-security/secret-scanning
+- **Låt AI hjälpa dig innan du börjar googla fel saker igen**
 
 ### ✅ Din uppgift: Steg 4
 
