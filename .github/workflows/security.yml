@@ -30,7 +30,7 @@ jobs:
       - name: Run semgrep
         continue-on-error: true
         run: |
-          semgrep --config=auto --error todo-app/
+          semgrep --config=auto --error todo-app/ --sarif --sarif-output=semgrep.sarif
 
   trivy:
     name: Trivy
