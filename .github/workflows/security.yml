@@ -32,6 +32,12 @@ jobs:
         run: |
           semgrep --config=auto --error todo-app/ --sarif --sarif-output=semgrep.sarif
 
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: semgrep.sarif
+
   trivy:
     name: Trivy
     runs-on: ubuntu-latest
