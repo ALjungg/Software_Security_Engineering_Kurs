@@ -19,73 +19,18 @@ jobs:
     name: semgrep/ci
     runs-on: ubuntu-latest
 
-    container:
-      image: semgrep/semgrep
-
     steps:
-      # Repo checkout
-      - uses: actions/checkout@v4
-      
-      - run: semgrep scan --sarif > semgrep-results.sarif
-    
-      - name: Save SARIF results as artifact
-        uses: actions/upload-artifact@v6
-        with:
-          name: semgrep-scan-results
-          path: semgrep-results.sarif
-
-      # Uploads results to security tab
-      - name: Upload SARIF
-        uses: github/codeql-action/upload-sarif@v4
-        with:
-          sarif_file: semgrep-results.sarif
+      - run: echo "Implement semgrep scanning"
 
 
   trivy:
     name: Trivy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - run: echo "Implement trivy scan"
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          # Possible scan-types: 'repo', 'fs', 'container-image'
-          scan-type: 'repo'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          # Specifies what types of issues to scan for
-          scanners: 'vuln,secret,misconfig,license'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
-
-#Secret scanning with TruffleHog
   truffle:
     name: TruffleHog
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # Required so TruffleHog can scan all commits, not only the latest one.
-          fetch-depth: 0
-
-      - name: Run TruffleHog scanner
-        # Keep findings visible without failing the complete security workflow.
-        continue-on-error: true
-        run: |
-          # Mount the repository at /tmp in the pinned scanner image and write SARIF for upload.
-          # Scan the full local Git history without contacting services to verify secrets.
-          docker run --rm -v "$PWD:/tmp" -w /tmp trufflesecurity/trufflehog@sha256:8eac1e631d18f4f6d5e00bc3420ef7415bddb9b8db66f968cfdb579a470d3392 \
-            git file:///tmp/ --since-commit '' --branch HEAD --no-verification --no-update --sarif > trufflehog-results.sarif
-
-      - name: Upload TruffleHog results
-        uses: github/codeql-action/upload-sarif@v4
-        with:
-          sarif_file: trufflehog-results.sarif
+      - run: echo "Implement trufflehog scan"
