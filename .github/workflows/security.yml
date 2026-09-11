@@ -28,7 +28,7 @@ jobs:
           python3 -m pip install semgrep
 
       - name: Run semgrep
-        continue-on-error: true
+        continue-on-error: true 
         run: |
           semgrep --config=auto --error todo-app/ --sarif --sarif-output=semgrep.sarif
 
@@ -42,7 +42,13 @@ jobs:
     name: Trivy
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Implement trivy scan"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Trivy scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "todo-app"
 
   truffle:
     name: TruffleHog
