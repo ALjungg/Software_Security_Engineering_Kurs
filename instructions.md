@@ -33,7 +33,7 @@ Dependabot är GitHubs inbyggda beroendehanteringsverktyg som automatiskt genoms
    - Kontrollera allvarlighetsgrad och påverkade versioner av bibliotek
    - Notera vilka beroenden i din `pom.xml` som har säkerhetsproblem 
 
-3. **Exandera Dependabot**
+3. **Expandera Dependabot**
    - Slå på PR skapande för **säkerhetsuppdateringar** och **vanliga uppdateringar**
 
 4. **Reflektionsfråga:**
